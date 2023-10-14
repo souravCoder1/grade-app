@@ -34,5 +34,18 @@ public class StudentServiceImpl implements StudentService{
 
     public List<Student> getStudent() {
         return studentRepo.findAll();
+
     }
+
+    public List<Student> getStudent(Long StudentId) {
+        // ask query
+        log.info("getStudent id {}",StudentId);
+        Optional<Student> studentOptional= studentRepo.findById(StudentId);
+        Student student=studentOptional.get();
+        Long gradeId= student.getGradeId();
+        return (List<Student>) student;
+    }
+
+
+
 }

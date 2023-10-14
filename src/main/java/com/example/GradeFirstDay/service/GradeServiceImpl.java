@@ -7,13 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-@Service
+
+
+@Service("imp2")
 @Slf4j
 
 public class GradeServiceImpl implements GradeService{
 
+    public GradeServiceImpl(GradeRepo repo) {
+        this.repo = repo;
+        log.info("imp2");
+    }
+
     @Autowired
     GradeRepo repo;
+
 
     @Override
     public List<Grade> saveGrades(List<Grade> gList) {

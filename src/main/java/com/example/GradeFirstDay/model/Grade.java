@@ -1,12 +1,11 @@
 package com.example.GradeFirstDay.model;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -18,15 +17,17 @@ import lombok.NoArgsConstructor;
 public class Grade {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long GradeID;
     @NotBlank(message = "Name is mandatory")
     private String name;
+    @JsonProperty("mycourse")
     @NotBlank(message = "courseName is mandatory")
     private String courseName;
     @NotBlank(message = "score is mandatory")
     private String score;
-    @NotBlank(message = "fullMarks is mandatory")
+    //@NotBlank(message = "fullMarks is mandatory")
+    @JsonIgnore
     private String fullMarks;
 
 }

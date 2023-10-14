@@ -7,6 +7,7 @@ import com.example.GradeFirstDay.model.Grade;
 import com.example.GradeFirstDay.service.GradeService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
@@ -22,7 +23,9 @@ public class GradeController {
 
    // List<Grade> grades = new ArrayList<>();
     @Autowired
+    @Qualifier("imp1")
     private GradeService service;
+
 
     @GetMapping("/grades")
     public List<Grade> getGrades() {

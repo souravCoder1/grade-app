@@ -15,4 +15,5 @@ public interface StudentService {
         //void updateGradeByName(String name,String score);
 
         List<Student> getStudent();
+        List<Student> getStudent(Long StudentId);
 }
