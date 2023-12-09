@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@RestController //("api/v1/student")
 @Slf4j
 public class StudentController {
 
     @Autowired
     private StudentService Studentservice;
 
-    @GetMapping("/students")
-    public List<Student> getStudent() {
+    @GetMapping("/{id}")
+    public List<Student> getStudent(@PathVariable Long id) {
         log.info("get student request");
         return Studentservice.getStudent();
     }
 
-    @PostMapping("/students")
+    @PostMapping
     public List<Student> createStudent(@Valid @RequestBody List<Student> slist) {
         log.info("add student {}",slist);
        return Studentservice.addStudent(slist);
