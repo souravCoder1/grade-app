@@ -25,8 +25,8 @@ public class Student {
     //@NotBlank(message = "Name is mandatory")
     private String studentName;
     private Long gradeId;
-//    @Column(name="cardNo")
-//    @OneToOne(mappedBy = "")
-//    private  StudentIdCard cardNo;
+
+    @OneToOne(mappedBy = "student")
+  private  StudentIdCard studentIdCard;
 
 }

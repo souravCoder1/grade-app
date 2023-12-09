@@ -15,7 +15,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RestController  //("api/v1/card")
+@RestController
+@RequestMapping("api/v1/card")
 @Slf4j
 public class StudentIdCardController {
 
@@ -34,7 +35,7 @@ public class StudentIdCardController {
     }
 
     @PostMapping
-    public StudentIdCard createStudent(@Valid @RequestBody StudentIdCard slist) {
+    public StudentIdCard createStudentId(@Valid @RequestBody StudentIdCard slist) {
         log.info("add student {}",slist);
         return studentIdCardService.addStudentIdCard(slist);
     }

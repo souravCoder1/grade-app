@@ -1,5 +1,7 @@
 package com.example.GradeFirstDay.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,16 +25,16 @@ public class StudentIdCard {
 
 
     @Column(name= "cardNo")
+    //@JsonProperty
     private String cardNo;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.MERGE,
+    fetch = FetchType.LAZY)
+   // @JsonIgnore
     @JoinColumn(
             name= "student_id",
             referencedColumnName = "studentID"
     )
     private Student student;
-
-
-
 
 }
