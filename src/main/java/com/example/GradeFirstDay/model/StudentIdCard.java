@@ -1,8 +1,6 @@
 package com.example.GradeFirstDay.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,22 +9,30 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
 
 @Entity
 @Table(
-        name = "student"
+        name = "StudentIdCard"
 )
-public class Student {
+public class StudentIdCard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long studentID;
+    private Long id;
     //@NotBlank(message = "Name is mandatory")
-    private String studentName;
-    private Long gradeId;
-//    @Column(name="cardNo")
-//    @OneToOne(mappedBy = "")
-//    private  StudentIdCard cardNo;
+
+
+    @Column(name= "cardNo")
+    private String cardNo;
+
+    @OneToOne
+    @JoinColumn(
+            name= "student_id",
+            referencedColumnName = "studentID"
+    )
+    private Student student;
+
+
+
 
 }
