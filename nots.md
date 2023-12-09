@@ -47,3 +47,24 @@ OneToMany: LAZY
 ManyToOne: EAGER
 ManyToMany: LAZY
 OneToOne: EAGER
+
+# jackson
+Here are some of the most commonly used JSON property annotations in Java:
+@JsonProperty:
+This annotation is used to specify the name of a field in the JSON output or input that differs from the name of the corresponding Java field. This can be useful when working with JSON data from external sources that use different naming conventions.
+@JsonIgnore:
+This annotation can be used to ignore a field during serialization and deserialization. Any field marked with this annotation will not be included in the JSON output or read from the JSON input.
+@JsonFormat:
+This annotation can be used to specify the format of a date or other value during serialization and deserialization. For example, you can use this annotation to specify that a date should be serialized in the format "yyyy-MM-dd".
+@JsonGetter:
+This annotation is used to mark a method as a getter method. This can be useful when working with JSON data from external sources that use different naming conventions.
+@JsonSetter:
+This annotation is used to mark a method as a setter method. This can be useful when working with JSON data from external sources that use different naming conventions.
+@JsonAlias:
+This annotation defines one or more alternative names for a property during deserialization. This can be useful when working with JSON data from external sources that use different naming conventions.
+@JsonCreator:
+This annotation is used to mark a constructor that should be used to create a Java object from JSON data. This can be useful when working with JSON data from external sources that use different naming conventions.
+@JsonTypeName:
+This annotation is used to specify the logical name that the annotated class has. This can be useful when working with JSON data from external sources that use different naming conventions.
+@JsonTypeInfo:
+This annotation is used to specify the type information that should be used to serialize and deserialize a Java object. This can be useful when working with JSON data from external sources that use different naming conventions.
