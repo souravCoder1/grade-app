@@ -36,17 +36,17 @@ The @JoinColumn annotation in JPA (Java Persistence API) is used to specify the 
 
 Here's a brief explanation of some commonly used attributes of @JoinColumn:
 
-name: The name of the foreign key column in the database.
-referencedColumnName: The name of the primary key column in the referenced table (by default, it is assumed to be the primary key of the referenced table).
-nullable: Specifies whether the foreign key column can contain null values (default is true).
-unique: Specifies whether the foreign key column should be part of a unique constraint (default is false).
+1. name: The name of the foreign key column in the database.
+2. referencedColumnName: The name of the primary key column in the referenced table (by default, it is assumed to be the primary key of the referenced table).
+3. nullable: Specifies whether the foreign key column can contain null values (default is true).
+4. unique: Specifies whether the foreign key column should be part of a unique constraint (default is false).
 
 # fetch type
 
-OneToMany: LAZY
-ManyToOne: EAGER
-ManyToMany: LAZY
-OneToOne: EAGER
+1. OneToMany: LAZY
+2. ManyToOne: EAGER
+3. ManyToMany: LAZY
+4. OneToOne: EAGER
 
 # jackson
 Here are some of the most commonly used JSON property annotations in Java:
