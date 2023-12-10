@@ -1,8 +1,7 @@
 package com.example.GradeFirstDay.repo;
 
-import com.example.GradeFirstDay.model.Grade;
-import com.example.GradeFirstDay.model.Student;
+import com.example.GradeFirstDay.model.StudentEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface StudentRepo extends JpaRepository<Student, Long> {
+public interface StudentRepo extends JpaRepository<StudentEntity, Long> {
 }

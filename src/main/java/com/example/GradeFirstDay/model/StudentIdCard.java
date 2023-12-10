@@ -1,10 +1,7 @@
 package com.example.GradeFirstDay.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -35,6 +32,6 @@ public class StudentIdCard {
             name= "student_id",
             referencedColumnName = "studentID"
     )
-    private Student student;
+    private StudentEntity studentEntity;
 
 }

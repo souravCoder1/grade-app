@@ -1,12 +1,11 @@
 package com.example.GradeFirstDay.controller;
 
-import com.example.GradeFirstDay.model.Student;
+import com.example.GradeFirstDay.model.StudentDto;
+import com.example.GradeFirstDay.model.StudentEntity;
 import com.example.GradeFirstDay.service.StudentService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,18 +16,18 @@ import java.util.List;
 public class StudentController {
 
     @Autowired
-    private StudentService Studentservice;
+    private StudentService studentService;
 
     @GetMapping("/{id}")
-    public List<Student> getStudent(@PathVariable Long id) {
+    public List<StudentDto> getStudent(@PathVariable Long id) {
         log.info("get student request");
-        return Studentservice.getStudent();
+        return studentService.getStudent();
     }
 
     @PostMapping
-    public List<Student> createStudent(@Valid @RequestBody List<Student> slist) {
+    public void createStudent(@Valid @RequestBody List<StudentDto> slist) {
         log.info("add student {}",slist);
-       return Studentservice.addStudent(slist);
+        studentService.addStudent(slist);
     }
 
     //@GetMapping("/grades/{name}")

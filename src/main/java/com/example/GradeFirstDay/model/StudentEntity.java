@@ -1,7 +1,6 @@
 package com.example.GradeFirstDay.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,7 +16,7 @@ import lombok.NoArgsConstructor;
 @Table(
         name = "student"
 )
-public class Student {
+public class StudentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
