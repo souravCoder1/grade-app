@@ -1,19 +1,46 @@
+https://docs.google.com/document/d/1_RzSrQ3xbE-qH9OmvFMVbe09_w4MuqIbbWBUutRX1SE/edit
+
 # CascadeType:
 
-* The CascadeType enumeration in Spring Data JPA defines different cascade options that you can use to specify the cascade behavior. These options include:
+* Cascade types in JPA are used to define how changes made to a parent entity are automatically 
+propagated to its related child entities. This helps to simplify data management and maintain 
+data consistency within your application.
 
-ALL: Cascades all operations (persist, merge, remove, refresh, detach) to the associated entities.
+Here's a breakdown of the different cascade types in JPA:
 
-PERSIST: Cascades the persist operation to the associated entities.
+1. CascadeType.PERSIST:
 
-MERGE: Cascades the merge operation to the associated entities.
+When the parent entity is persisted (saved to the database), all its related child entities are also persisted.
+This is useful for ensuring that all newly created child entities are properly saved along with their parent.
+2. CascadeType.MERGE:
 
-REMOVE: Cascades the remove operation to the associated entities.
+When the parent entity is merged (updated in the database), the changes are also applied to its related child entities.
+This ensures that any updates to the parent are reflected in its associated child entities.
+3. CascadeType.REMOVE:
 
-REFRESH: Cascades the refresh operation to the associated entities.
+When the parent entity is removed (deleted from the database), all its related child entities are also removed.
+This helps to prevent orphaned child entities from being left in the database after their parent is deleted.
+4. CascadeType.REFRESH:
 
-DETACH: Cascades the detach operation to the associated entities.
+When the parent entity is refreshed (its state is synchronized with the database), the changes are also reflected in its related child entities.
+This can be useful for ensuring that your application always has the latest data for both the parent and child entities.
+5. CascadeType.DETACH:
 
+When the parent entity is detached (removed from the persistence context), all its related child entities are also detached.
+This is useful for freeing up memory and preventing unnecessary updates to the database.
+6. CascadeType.REPLICATE:
+
+This cascade type is specific to Hibernate and indicates that the entity should be replicated across a cluster.
+This is not commonly used in most applications.
+7. CascadeType.SAVE_UPDATE:
+
+This cascade type is also specific to Hibernate and combines the functionality of both CascadeType.PERSIST and CascadeType.MERGE.
+This means that the entity will be saved if it is new and updated if it already exists.
+Additional Points:
+
+You can combine multiple cascade types together using an array.
+By default, no cascade type is applied. You need to explicitly specify which cascade types you want to use.
+Cascade types can be applied to both one-to-many and many-to-one relationships.
 
 # Fetch type
 
