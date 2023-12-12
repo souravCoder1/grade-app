@@ -1,5 +1,6 @@
 package com.example.GradeFirstDay.service;
 
+import com.example.GradeFirstDay.model.StudentEntity;
 import com.example.GradeFirstDay.model.StudentIdCard;
 import com.example.GradeFirstDay.repo.StudentIdCardRepo;
 import org.springframework.beans.factory.annotation.Autowired;

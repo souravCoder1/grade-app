@@ -1,5 +1,6 @@
 package com.example.GradeFirstDay.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -24,8 +25,8 @@ public class StudentEntity {
     //@NotBlank(message = "Name is mandatory")
     private String studentName;
     private Long gradeId;
-
-    @OneToOne(mappedBy = "student")
+    @JsonIgnore
+    @OneToOne(mappedBy = "studentEntity", fetch = FetchType.LAZY)
   private  StudentIdCard studentIdCard;
 
 }

@@ -56,6 +56,7 @@ public class StudentServiceImpl implements StudentService{
     // Helper methods to convert between Entity and DTO
     private StudentEntity convertToEntity(StudentDto studentDto) {
         StudentEntity student = new StudentEntity();
+        student.setStudentID(studentDto.getStudentID());
         student.setStudentName(studentDto.getStudentName());
         student.setGradeId(studentDto.getGradeId());
         return student;
@@ -63,6 +64,7 @@ public class StudentServiceImpl implements StudentService{
 
     private StudentDto convertToDto(StudentEntity studentEntity) {
         StudentDto student = new StudentDto();
+        student.setStudentID(studentEntity.getStudentID());
         student.setStudentName(studentEntity.getStudentName());
         student.setGradeId(studentEntity.getGradeId());
         return student;
