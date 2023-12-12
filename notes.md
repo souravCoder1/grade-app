@@ -111,3 +111,77 @@ This annotation is used to specify the logical name that the annotated class has
 
 @JsonTypeInfo:
 This annotation is used to specify the type information that should be used to serialize and deserialize a Java object. This can be useful when working with JSON data from external sources that use different naming conventions.
+
+# DTO to Entity ane vice versa. 
+
+The conversion between DTOs (Data Transfer Objects) and entities is typically handled in a separate layer known as the "Service" or "Mapper" layer. This layer acts as an intermediary between your controllers (or API endpoints) and your data access layer (Repositories or DAOs). Here's a common breakdown:
+
+1. **Controller Layer:**
+   - Receives HTTP requests and handles HTTP responses.
+   - Validates input, delegates business logic to the service layer, and formats output.
+
+2. **Service Layer:**
+   - Contains business logic and application-specific behavior.
+   - Utilizes the Repository layer to interact with the database.
+   - Responsible for converting DTOs to entities and vice versa.
+
+3. **Repository Layer:**
+   - Manages database interactions (CRUD operations) using JPA repositories or DAOs.
+
+4. **DTOs:**
+   - Represent data structures for communication between different layers of your application.
+   - Typically used to transfer data between the Controller layer and the Service layer or between the Service layer and external systems.
+
+5. **Entities:**
+   - Represent objects that are persisted in the database.
+   - Annotated with JPA annotations, often directly mapped to database tables.
+
+6. **Mapper/Service Layer:**
+   - Converts DTOs to entities and vice versa.
+   - Contains logic for mapping fields between DTOs and entities.
+
+Here's a simple example using a mapper class:
+
+```java
+// DTO class
+public class PersonDTO {
+    private Long id;
+    private String name;
+    // other fields, getters, setters
+}
+
+// Entity class
+@Entity
+public class Person {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    // other fields, getters, setters
+}
+
+// Mapper class
+@Component
+public class PersonMapper {
+
+    public PersonDTO toDto(Person person) {
+        PersonDTO dto = new PersonDTO();
+        dto.setId(person.getId());
+        dto.setName(person.getName());
+        // map other fields
+        return dto;
+    }
+
+    public Person toEntity(PersonDTO dto) {
+        Person person = new Person();
+        person.setId(dto.getId());
+        person.setName(dto.getName());
+        // map other fields
+        return person;
+    }
+}
+```
+
+In this example, the `PersonMapper` class is responsible for converting `Person` entities to `PersonDTO` DTOs and vice versa. The `@Component` annotation indicates that it is a Spring component and can be injected into other Spring-managed beans, such as services.
+
+This approach helps maintain a clear separation of concerns and makes it easier to manage changes in data structures between different layers of your application.
