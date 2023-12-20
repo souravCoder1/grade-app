@@ -2,6 +2,9 @@ https://docs.google.com/document/d/1_RzSrQ3xbE-qH9OmvFMVbe09_w4MuqIbbWBUutRX1SE/
 
 # CascadeType:
 
+In Hibernate, cascade types are used to specify how changes to a parent entity should affect its child entities. 
+There are several cascade types available, each with its own purpose.
+
 * Cascade types in JPA are used to define how changes made to a parent entity are automatically 
 propagated to its related child entities. This helps to simplify data management and maintain 
 data consistency within your application.
