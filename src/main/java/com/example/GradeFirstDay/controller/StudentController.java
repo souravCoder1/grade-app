@@ -18,12 +18,16 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @GetMapping("/{id}")
-    public List<StudentDto> getStudent(@PathVariable Long id) {
+    @GetMapping
+    public List<StudentDto> getStudent() {
         log.info("get student request");
         return studentService.getStudent();
     }
-
+    @GetMapping("/{id}")
+    public StudentDto getStudent(@PathVariable Long id) {
+        log.info("get student request");
+        return studentService.getStudent(id);
+    }
     @PostMapping
     public void createStudent(@Valid @RequestBody List<StudentDto> slist) {
         log.info("add student {}",slist);
