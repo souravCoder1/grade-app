@@ -2,6 +2,10 @@ https://docs.google.com/document/d/1_RzSrQ3xbE-qH9OmvFMVbe09_w4MuqIbbWBUutRX1SE/
 
 https://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
 
+https://stackoverflow.com/questions/25053792/who-is-owner-in-association-with-jpa-and-hibernate
+
+https://stackoverflow.com/questions/2749689/what-is-the-owning-side-in-an-orm-mapping
+
 # CascadeType:
 
 In Hibernate, cascade types are used to specify how changes to a parent entity should affect its child entities. 
