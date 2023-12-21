@@ -121,7 +121,7 @@ This annotation is used to specify the logical name that the annotated class has
 @JsonTypeInfo:
 This annotation is used to specify the type information that should be used to serialize and deserialize a Java object. This can be useful when working with JSON data from external sources that use different naming conventions.
 
-# DTO to Entity ane vice versa. 
+# DTO to Entity and vice versa. 
 
 The conversion between DTOs (Data Transfer Objects) and entities is typically handled in a separate layer known as the "Service" or "Mapper" layer. This layer acts as an intermediary between your controllers (or API endpoints) and your data access layer (Repositories or DAOs). Here's a common breakdown:
 
