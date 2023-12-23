@@ -10,5 +10,6 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 public class StudentIdCardDTO implements Serializable {
+    private Long id;
     private String cardNo;
 }

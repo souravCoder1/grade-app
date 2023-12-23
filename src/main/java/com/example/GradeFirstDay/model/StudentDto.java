@@ -12,4 +12,5 @@ public class StudentDto implements Serializable {
     private Long studentID;
     private String studentName;
     private Long gradeId;
+    private StudentIdCardDTO studentIdCardDTO;
 }

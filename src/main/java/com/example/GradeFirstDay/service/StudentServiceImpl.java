@@ -3,6 +3,9 @@ package com.example.GradeFirstDay.service;
 import com.example.GradeFirstDay.exception.StudentNotPresentExcpetion;
 import com.example.GradeFirstDay.model.StudentDto;
 import com.example.GradeFirstDay.model.StudentEntity;
+import com.example.GradeFirstDay.model.StudentIdCard;
+import com.example.GradeFirstDay.model.StudentIdCardDTO;
+import com.example.GradeFirstDay.repo.StudentIdCardRepo;
 import com.example.GradeFirstDay.repo.StudentRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,14 +22,23 @@ public class StudentServiceImpl implements StudentService{
     @Autowired
     StudentRepo studentRepo;
 
+    @Autowired
+    StudentIdCardRepo studentIdCardRepo;
+
+    @Autowired
+    StudentIdCardServiceImpl studentIdCardService;
+
     @Override
     public void addStudent(List<StudentDto> sList) {
         for (StudentDto studentDto: sList) {
             StudentEntity student = convertToEntity(studentDto);
-            student = studentRepo.save(student);
+//            Optional<StudentIdCard> IdCard =
+//                    studentIdCardRepo.findById(studentDto.getStudentIdCardDTO().getId());
+            student.addStudentIdCard(student.getStudentIdCard());
+            //student.setStudentIdCard(IdCard.get());
+            studentRepo.save(student);
         }
     }
-
     public List<StudentDto> getStudent() {
         List<StudentEntity> students = studentRepo.findAll();
         return students.stream()
@@ -59,6 +71,8 @@ public class StudentServiceImpl implements StudentService{
         student.setStudentID(studentDto.getStudentID());
         student.setStudentName(studentDto.getStudentName());
         student.setGradeId(studentDto.getGradeId());
+        student.addStudentIdCard(studentIdCardService
+                .convertToEntity(studentDto.getStudentIdCardDTO()));
         return student;
     }
 

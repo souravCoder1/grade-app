@@ -1,6 +1,5 @@
 package com.example.GradeFirstDay.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import lombok.AllArgsConstructor;
@@ -25,8 +24,11 @@ public class StudentEntity {
     //@NotBlank(message = "Name is mandatory")
     private String studentName;
     private Long gradeId;
-    @JsonIgnore
-    @OneToOne(mappedBy = "studentEntity", fetch = FetchType.LAZY)
-  private  StudentIdCard studentIdCard;
+    @OneToOne(mappedBy = "studentEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private StudentIdCard studentIdCard;
+    public void addStudentIdCard(StudentIdCard studentIdCard) {
+        this.studentIdCard = studentIdCard;
+        studentIdCard.setStudentEntity(this);
+    }
 
 }

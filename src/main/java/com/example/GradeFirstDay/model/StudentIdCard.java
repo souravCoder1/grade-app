@@ -4,13 +4,13 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 @Entity
 @Table(
         name = "StudentIdCard"
@@ -27,11 +27,11 @@ public class StudentIdCard {
     //@JsonProperty
     private String cardNo;
 
-    @OneToOne(cascade = CascadeType.MERGE,
-    fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL,
+    fetch = FetchType.EAGER)
    // @JsonIgnore
     @JoinColumn(
-            name= "student_id",
+            name= "student_id_FK",
             referencedColumnName = "studentID"
     )
     private StudentEntity studentEntity;
