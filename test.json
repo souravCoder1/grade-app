@@ -1,0 +1,20 @@
+[
+  {
+    "studentName": "kpkp",
+    "gradeId": 123,
+    "studentIdCardDTO": {
+      "cardNo": 999
+    }
+  }
+]
+,
+
+[
+  {
+    "studentName": "kpkp",
+    "gradeId": 123,
+    "studentIdCardDTO": {
+      "id": 1
+    }
+  }
+]
