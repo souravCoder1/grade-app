@@ -23,8 +23,9 @@ public class StudentEntity {
     //@NotBlank(message = "Name is mandatory")
     private String studentName;
     private Long gradeId;
-    @OneToOne(mappedBy = "studentEntity", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "studentEntity", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private StudentIdCard studentIdCard;
+
     public void addStudentIdCard(StudentIdCard studentIdCard) {
         this.studentIdCard = studentIdCard;
         studentIdCard.setStudentEntity(this);

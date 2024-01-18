@@ -25,7 +25,7 @@ public class StudentIdCard {
     private String cardNo;
 
     @OneToOne(cascade = CascadeType.ALL,
-    fetch = FetchType.LAZY)
+    fetch = FetchType.EAGER)
    // @JsonIgnore
     @JoinColumn(
             name= "student_id_FK",

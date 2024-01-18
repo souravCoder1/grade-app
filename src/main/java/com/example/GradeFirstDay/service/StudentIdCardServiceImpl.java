@@ -47,6 +47,7 @@ public class StudentIdCardServiceImpl implements StudentIdCardService {
 
     public StudentIdCardDTO convertToDto(StudentIdCard studentIdCard) {
         StudentIdCardDTO card = new StudentIdCardDTO();
+        card.setId(studentIdCard.getId());
         card.setCardNo(studentIdCard.getCardNo());
         return card;
     }

@@ -11,13 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
 @Slf4j
 
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements StudentService {
     @Autowired
     StudentRepo studentRepo;
 
@@ -29,41 +28,45 @@ public class StudentServiceImpl implements StudentService{
 
     @Override
     public void addStudent(List<StudentDto> sList) {
-        for (StudentDto studentDto: sList) {
-            Optional<StudentIdCard> IdCard =
-                    studentIdCardRepo.findById(studentDto.getStudentIdCardDTO().getId());
+        for (StudentDto studentDto : sList) {
             StudentEntity student = convertToEntity(studentDto);
-//            StudentIdCard studentIdCard = studentIdCardService
-//                    .convertToEntity(studentDto.getStudentIdCardDTO());
-            //student.addStudentIdCard(studentIdCard);
-            student.setStudentIdCard(IdCard.get());
-            IdCard.get().setStudentEntity(student);
+            StudentIdCard studentIdCard = studentIdCardService.convertToEntity(studentDto.getStudentIdCardDTO());
+            /*
+            For Persist CaseCade Type
+            * */
+            student.addStudentIdCard(studentIdCard);
+            /*
+            For Merge CaseCade Type
+            * */
+//            Optional<StudentIdCard> IdCard =
+//                    studentIdCardRepo.findById(studentDto.getStudentIdCardDTO().getId());
+//            student.setStudentIdCard(IdCard.get());
+//            IdCard.get().setStudentEntity(student);
+
+
 //            student.addStudentIdCard(student.getStudentIdCard());
-            //student.setStudentIdCard(IdCard.get());
             studentRepo.save(student);
         }
     }
+
     public List<StudentDto> getStudent() {
         List<StudentEntity> students = studentRepo.findAll();
-        return students.stream()
-                .map(this::convertToDto)
-                .collect(Collectors.toList());
+        return students.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
     /**
+     * orElseThrow is a method provided by the Optional class in Java.
+     * It is used to retrieve the value from the Optional if it is present, and if it's not present,
+     * an exception is thrown. This is useful in situations where you expect the Optional to contain a value,
+     * and if it doesn't, you want to handle it by throwing a specific exception.
      *
-     orElseThrow is a method provided by the Optional class in Java.
-     It is used to retrieve the value from the Optional if it is present, and if it's not present,
-     an exception is thrown. This is useful in situations where you expect the Optional to contain a value,
-     and if it doesn't, you want to handle it by throwing a specific exception.
      * @param studentId
      * @return
      */
     public StudentDto getStudent(Long studentId) {
         // ask query
-        log.info("getStudentEntity id {}",studentId); // security issue
-        StudentEntity student = studentRepo.findById(studentId)
-                .orElseThrow(() -> new StudentNotPresentExcpetion("Student not found with ID"));
+        log.info("getStudentEntity id {}", studentId); // security issue
+        StudentEntity student = studentRepo.findById(studentId).orElseThrow(() -> new StudentNotPresentExcpetion("Student not found with ID"));
 
         return convertToDto(student);
     }
