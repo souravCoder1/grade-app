@@ -1,7 +1,6 @@
 package com.example.GradeFirstDay.controller;
 
 import com.example.GradeFirstDay.model.StudentDto;
-import com.example.GradeFirstDay.model.StudentEntity;
 import com.example.GradeFirstDay.service.StudentService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;

@@ -1,7 +1,6 @@
 package com.example.GradeFirstDay.service;
 
 import com.example.GradeFirstDay.model.StudentDto;
-import com.example.GradeFirstDay.model.StudentEntity;
 
 import java.util.List;
 

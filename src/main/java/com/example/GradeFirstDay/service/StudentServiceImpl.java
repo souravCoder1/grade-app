@@ -1,10 +1,9 @@
 package com.example.GradeFirstDay.service;
 
+import com.example.GradeFirstDay.Entity.StudentEntity;
+import com.example.GradeFirstDay.Entity.StudentIdCard;
 import com.example.GradeFirstDay.exception.StudentNotPresentExcpetion;
 import com.example.GradeFirstDay.model.StudentDto;
-import com.example.GradeFirstDay.model.StudentEntity;
-import com.example.GradeFirstDay.model.StudentIdCard;
-import com.example.GradeFirstDay.model.StudentIdCardDTO;
 import com.example.GradeFirstDay.repo.StudentIdCardRepo;
 import com.example.GradeFirstDay.repo.StudentRepo;
 import lombok.extern.slf4j.Slf4j;
@@ -31,10 +30,15 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public void addStudent(List<StudentDto> sList) {
         for (StudentDto studentDto: sList) {
+            Optional<StudentIdCard> IdCard =
+                    studentIdCardRepo.findById(studentDto.getStudentIdCardDTO().getId());
             StudentEntity student = convertToEntity(studentDto);
-//            Optional<StudentIdCard> IdCard =
-//                    studentIdCardRepo.findById(studentDto.getStudentIdCardDTO().getId());
-            student.addStudentIdCard(student.getStudentIdCard());
+//            StudentIdCard studentIdCard = studentIdCardService
+//                    .convertToEntity(studentDto.getStudentIdCardDTO());
+            //student.addStudentIdCard(studentIdCard);
+            student.setStudentIdCard(IdCard.get());
+            IdCard.get().setStudentEntity(student);
+//            student.addStudentIdCard(student.getStudentIdCard());
             //student.setStudentIdCard(IdCard.get());
             studentRepo.save(student);
         }
@@ -71,8 +75,6 @@ public class StudentServiceImpl implements StudentService{
         student.setStudentID(studentDto.getStudentID());
         student.setStudentName(studentDto.getStudentName());
         student.setGradeId(studentDto.getGradeId());
-        student.addStudentIdCard(studentIdCardService
-                .convertToEntity(studentDto.getStudentIdCardDTO()));
         return student;
     }
 

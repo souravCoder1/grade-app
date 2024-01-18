@@ -1,8 +1,5 @@
 package com.example.GradeFirstDay.controller;
 
-import com.example.GradeFirstDay.exception.CardNotPresentExcpetion;
-import com.example.GradeFirstDay.model.StudentDto;
-import com.example.GradeFirstDay.model.StudentIdCard;
 import com.example.GradeFirstDay.model.StudentIdCardDTO;
 import com.example.GradeFirstDay.service.StudentIdCardService;
 import jakarta.validation.Valid;
@@ -11,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("api/v1/card")

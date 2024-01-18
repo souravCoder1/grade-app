@@ -1,15 +1,13 @@
 package com.example.GradeFirstDay.service;
 
+import com.example.GradeFirstDay.Entity.StudentIdCard;
 import com.example.GradeFirstDay.exception.CardNotPresentExcpetion;
-
-import com.example.GradeFirstDay.model.StudentIdCard;
 import com.example.GradeFirstDay.model.StudentIdCardDTO;
 import com.example.GradeFirstDay.repo.StudentIdCardRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
